@@ -6,7 +6,6 @@ public class ForumPost {
 
     private int userId, id;
     private String title, body;
-    private int specialisation;
 
     public ForumPost() {
     }
@@ -16,7 +15,6 @@ public class ForumPost {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.specialisation = R.string.specialisation;
     }
 
     public int getUserId() {
@@ -49,14 +47,6 @@ public class ForumPost {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public int getSpecialisation() {
-        return specialisation;
-    }
-
-    public void setSpecialisation(int specialisation) {
-        this.specialisation = specialisation;
     }
 
     @Override

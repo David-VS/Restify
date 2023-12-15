@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdk 34
 
     defaultConfig {
         applicationId "be.ehb.restify"
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdkVersion 26
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -20,6 +19,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'be.ehb.restify'
 }
 
 dependencies {

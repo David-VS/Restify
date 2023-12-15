@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import be.ehb.restify.R;
 import be.ehb.restify.model.ForumPost;
 
-public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.ForumHolder> {
+public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.ForumHolder>  {
 
     class ForumHolder extends RecyclerView.ViewHolder{
 
@@ -46,7 +48,7 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.Foru
     public void onBindViewHolder(@NonNull ForumHolder holder, int position) {
         ForumPost mForumPost = data.get(position);
 
-        holder.titleTV.setText(mForumPost.getSpecialisation());
+        holder.titleTV.setText(mForumPost.getTitle());
         holder.contentTV.setText(mForumPost.getBody());
     }
 
