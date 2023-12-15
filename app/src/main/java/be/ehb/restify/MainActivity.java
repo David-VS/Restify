@@ -52,34 +52,27 @@ public class MainActivity extends AppCompatActivity {
                             .build();
 
                     Response mResponse = mClient.newCall(mRequest).execute();
+                    String responsePlain = mResponse.body().string();
+                    JSONArray mJsonArray = new JSONArray(responsePlain);
+                    int itemCount = mJsonArray.length();
+                    int i = 0;
 
-                        String responsePlain = mResponse.body().string();
-
-                        JSONArray mJsonArray = new JSONArray(responsePlain);
-                        int itemCount = mJsonArray.length();
-                        int i = 0;
-
-                        while(i < itemCount){
-                            JSONObject mJsonObject = mJsonArray.getJSONObject(i);
-
-                            final ForumPost curentPost = new ForumPost(
-                                mJsonObject.getInt("userId"),
-                                mJsonObject.getInt("id"),
-                                mJsonObject.getString("title"),
-                                mJsonObject.getString("body")
-                            );
-
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mAdapter.addItem(curentPost);
-                                }
-                            });
-
-                            i++;
-                        }
-
-
+                    while(i < itemCount){
+                        JSONObject mJsonObject = mJsonArray.getJSONObject(i);
+                        final ForumPost curentPost = new ForumPost(
+                            mJsonObject.getInt("userId"),
+                            mJsonObject.getInt("id"),
+                            mJsonObject.getString("title"),
+                            mJsonObject.getString("body")
+                        );
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mAdapter.addItem(curentPost);
+                            }
+                        });
+                        i++;
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
